@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>  
+    <menuitem id="menu_harvest_root"
+        name="Harvest Hub"
+        sequence="9"
+    />
+    <menuitem id="menu_harvest_configuration"
+        name="Configuration"
+        parent="menu_harvest_root"
+        sequence="9"
+    />
+</odoo>

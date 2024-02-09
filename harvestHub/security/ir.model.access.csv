@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+harvestHub.access_harvesthub_farmers,access_harvesthub_farmers,harvestHub.model_harvesthub_farmers,base.group_user,1,1,1,1

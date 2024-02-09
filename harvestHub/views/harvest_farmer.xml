@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_harvest_farmer" model="ir.actions.act_window">
+        <field name="name">Farmers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">harvesthub.farmers</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="menu_harvest_farmer" name="Configure Farmer" parent="menu_harvest_configuration" action="action_harvest_farmer" sequence="9" />
+</odoo>
