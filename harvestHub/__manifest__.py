@@ -1,6 +1,6 @@
 {
     'name':'Harvest Hub',
-    'depends': ['base'],
+    'depends': ['base','mail'],
     'author':'jatin',
     'installable':True,
     'data':[
