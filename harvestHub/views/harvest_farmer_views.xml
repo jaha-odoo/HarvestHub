@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <record id="view_harvest_farmer_form" model="ir.ui.view">
-        <field name="name">harvest.farmers.form</field>
+    <record id="view_harvest_configuration_farmer_form" model="ir.ui.view">
+        <field name="name">harvest.configuration.farmer.form</field>
         <field name="model">harvesthub.farmers</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <!-- <div class="oe_title">
+                    <div class="oe_title">
                         <h1>
                             <field name="ref" readonly="true"/>
                         </h1>
-                    </div> -->
-                    <h1>
+                    </div>
+                    <h2>
                         <field name="name"/>
-                    </h1>
+                    </h2>
                     <group>
                         <group>
                             <field name="address"/>
@@ -24,6 +24,10 @@
                         <group>
                             <field name="phone"/>
                             <field name="email"/>
+                            <field name="gender"/>
+                            <field name="age"/>
+                            <field name="isold"/>
+                            <field name="capitalize_name"/>
                         </group>
 
                         <notebook>
@@ -32,17 +36,17 @@
                         </notebook>
                     </group>
                 </sheet>
-                <!--                  
+
                 <div class="oe_chatter">
                     <field name="message_follower_ids" />
                     <field name="message_ids" options="{'post_refresh':'recipients'}"/>
-                </div> -->
+                </div>
             </form>
         </field>
     </record>
 
-    <record id="view_harvest_farmer_kanban" model="ir.ui.view">
-        <field name="name">harvest.farmers.kanban</field>
+    <record id="view_harvest_configuration_farmer_kanban" model="ir.ui.view">
+        <field name="name">harvest.configuration.farmer.kanban</field>
         <field name="model">harvesthub.farmers</field>
         <field name="arch" type="xml">
             <kanban>
@@ -64,8 +68,8 @@
         </field>
     </record>
 
-     <record id="view_harvest_farmer_search" model="ir.ui.view">
-        <field name="name">harvest.farmer.search</field>
+    <record id="view_configuration_harvest_farmer_search" model="ir.ui.view">
+        <field name="name">harvest.configuration.farmer.search</field>
         <field name="model">harvesthub.farmers</field>
         <field name="arch" type="xml">
             <search>
@@ -73,16 +77,20 @@
                 <field name="address"/>
 
                 <filter name="is Old?" string="is Old?" domain="[('isold','=','True')]"/>
+
+                <group expand="0" string="Group By">
+                    <filter string="gender" name="group_by_gender" context="{'group_by':'gender'}"/>
+                </group>
             </search>
         </field>
     </record>
 
-    <record id="action_harvest_farmer" model="ir.actions.act_window">
+    <record id="action_harvest_configuration_farmer" model="ir.actions.act_window">
         <field name="name">Farmers</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">harvesthub.farmers</field>
         <field name="view_mode">kanban,form</field>
     </record>
 
-    <menuitem id="menu_harvest_farmer" name="Configure Farmer" parent="menu_harvest_configuration" action="action_harvest_farmer" sequence="9" />
+    <menuitem id="menu_harvest_configuration_farmer" name="Configure Farmer" parent="menu_harvest_configuration" action="action_harvest_configuration_farmer" sequence="9" />
 </odoo>

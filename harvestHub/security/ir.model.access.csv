@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 harvestHub.access_harvesthub_farmers,access_harvesthub_farmers,harvestHub.model_harvesthub_farmers,base.group_user,1,1,1,1
+harvestHub.access_harvest_locations,access_harvest_locations,harvestHub.model_harvest_locations,base.group_user,1,1,1,1
+harvestHub.access_harvest_animal,access_harvest_animal,harvestHub.model_harvest_animal,base.group_user,1,1,1,1

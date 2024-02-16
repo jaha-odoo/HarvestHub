@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="harvest_configuration_location_form" model="ir.ui.view">
+        <field name="name">harvest.configuration.location.form</field>
+        <field name="model">harvest.locations</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ref" readonly="true"/>
+                        </h1>
+                    </div>
+                    <h2>
+                        <field name="name" />
+                    </h2>
+                    <group>
+                        <field name="farmer"/>
+                        <field name="address"/>
+                        <field name="animal_id" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="message_ids" options="{'post_refresh':'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="harvest_configuration_location_list" model="ir.ui.view">
+        <field name="name">harvest.configuration.location.list</field>
+        <field name="model">harvest.locations</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="address"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="harvest_configuration_location_search" model="ir.ui.view">
+        <field name="name">harvest.configuration.location.search</field>
+        <field name="model">harvest.locations</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="address"/>
+
+                <group expand="0" string="Group By">
+                    <filter string="farmer" name="group_by_farmer" context="{'group_by':'farmer'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_harvest_configuration_location" model="ir.actions.act_window">
+        <field name="name">Location</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">harvest.locations</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_harvest_configuration_location" name="Configure Location" parent="menu_harvest_configuration" action="action_harvest_configuration_location" />
+</odoo>
