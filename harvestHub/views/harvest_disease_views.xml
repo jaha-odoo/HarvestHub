@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="harvest_crop_disease_form" model="ir.ui.view">
+        <field name="name">harvest.crop.disease.form</field>
+        <field name="model">harvest.disease</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                            <field name="name"/>
+                            <field name="detail"/> 
+                    </group>
+
+                    <notebook>
+                        <page string="Disease Details">
+                            <group>
+                                <field name="symptoms"/>
+                                <field name="condition" />
+                            </group>
+                        </page>
+
+                        <page string="Disease Cure">
+                            <group>
+                                <field name="precaustions"/>
+                                <field name="medications" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="message_ids" options="{'post_refresh':'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="harvest_crop_disease_list" model="ir.ui.view">
+        <field name="name">harvest.crop.disease.list</field>
+        <field name="model">harvest.disease</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="detail"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_harvest_crop_disease" model="ir.actions.act_window">
+        <field name="name">Cures of Diseases</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">harvest.disease</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

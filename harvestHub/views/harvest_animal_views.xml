@@ -4,8 +4,6 @@
     <field name="name">Animal</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">harvest.animal</field>
-    <field name="view_mode">list,form</field>
+    <field name="view_mode">list</field>
   </record>
-
-  <menuitem id="menu_harvest_configuration_animal" name="Configure Animal" parent="menu_harvest_configuration" action="action_harvest_configuration_animal"/>
 </odoo>

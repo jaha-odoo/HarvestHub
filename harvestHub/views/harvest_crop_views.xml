@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record id="harvest_crop_agricrop_form" model="ir.ui.view">
+    <field name="name">harvest.crop.agricrop.form</field>
+    <field name="model">harvest.crop</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+         
+          <field name="state" widget="statusbar" statusbar_visible="Preparation,Planting,Growing,Harvesting,Post-Harvest"/>
+        </header>
+        <sheet>
+          <h1>
+            <field name="name" />
+          </h1>
+          <group>
+            <field name="durations"/>
+            <field name="season"/>
+            <field name="description"/>
+            <field name="state"/>
+          </group>
+        </sheet>
+
+        <div class="oe_chatter">
+          <field name="message_follower_ids" />
+          <field name="message_ids" options="{'post_refresh':'recipients'}"/>
+        </div>
+      </form>
+    </field>
+  </record>
+
+  <record id="harvest_crop_agricrop_list" model="ir.ui.view">
+    <field name="name">harvest.crop.agricrop.list</field>
+    <field name="model">harvest.crop</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name" />
+        <field name="description"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_harvest_crop_agricrop" model="ir.actions.act_window">
+    <field name="name">Agriculture Crops</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">harvest.crop</field>
+    <field name="view_mode">list,form</field>
+  </record>
+</odoo>

@@ -1,5 +1,6 @@
 from odoo import api,models,fields,_
 from odoo.exceptions import ValidationError
+from dateutil.relativedelta import relativedelta
 
 
 class harvestFarmer(models.Model):
@@ -12,12 +13,14 @@ class harvestFarmer(models.Model):
     address= fields.Char(string='Address',tracking=True)
     phone= fields.Char(string='Phone',tracking=True)
     email= fields.Char(string='Email',tracking=True)
+    farmer_photo = fields.Image(string='Farmer Photo')
     gender=fields.Selection([('male','Male'),('female','Female')],string='Gender',tracking=True)
-    age= fields.Integer(string='Age',tracking=True)
+    date_of_birth=fields.Date(string='Date of Birth',tracking=True)
+    age= fields.Integer(string='Age',tracking=True,compute="_compute_age",store=True,inverse="_inverse_age")
     taxId=fields.Char(string='TaxId' ,readonly=True,tracking=True)
     isold=fields.Boolean(string='IsOld ?',tracking=True)
     ref=fields.Char(string='Reference',default=lambda self:_('New'))
-    capitalize_name= fields.Char(string='Capitalize Name',compute='_compute_capitalize_name',store=True)
+    vehicle_ids=fields.One2many('harvest.vehicle','farmer_id')
 
     @api.model_create_multi
     def create(self,vals_list):
@@ -25,24 +28,30 @@ class harvestFarmer(models.Model):
             # if we want to make modification do here
             vals['ref']=self.env['ir.sequence'].next_by_code('harvesthub.farmers')
         return super(harvestFarmer,self).create(vals_list)    
-
-    @api.constrains('isold','age')
-    def check_is_old(self):
+         
+    @api.depends('date_of_birth')
+    def _compute_age(self):
+      for rec in self:
+        if rec.date_of_birth:
+            age = relativedelta(fields.Date.today(),rec.date_of_birth).years
+            rec.age = age
+   
+    @api.depends('age')
+    def _inverse_age(self):
         for rec in self:
-            if rec.isold and rec.age==0:
-                raise ValidationError(_("age has to be recorded"))
+            if rec.age:
+                rec.date_of_birth = fields.Date.today() - relativedelta(years=rec.age)
 
-    @api.depends('name')
-    def _compute_capitalize_name(self):
-        for rec in self:
-            if rec.name:
-                rec.capitalize_name=rec.name.upper()
-            else:
-                rec.capitalize_name=''    
-    
+   
     @api.onchange('age')
     def onchange_age(self):
         if self.age >=58:
             self.isold=True
         else:
-            self.isold=False    
+            self.isold=False  
+
+    @api.constrains('isold','age')
+    def _check_is_old(self):
+        for rec in self:
+            if rec.isold and rec.age==0:
+                raise ValidationError("age has to be recorded")
