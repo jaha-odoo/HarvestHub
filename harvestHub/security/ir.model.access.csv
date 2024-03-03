@@ -7,3 +7,4 @@ harvestHub.access_harvest_crop,access_harvest_crop,harvestHub.model_harvest_crop
 harvestHub.access_harvest_process,access_harvest_process,harvestHub.model_harvest_process,base.group_user,1,1,1,1
 harvestHub.access_harvest_disease,access_harvest_disease,harvestHub.model_harvest_disease,base.group_user,1,1,1,1
 harvestHub.access_harvest_incident,access_harvest_incident,harvestHub.model_harvest_incident,base.group_user,1,1,1,1
+harvestHub.access_harvest_adddisease_wizard,access_harvest_adddisease_wizard,harvestHub.model_harvest_adddisease_wizard,base.group_user,1,1,1,1

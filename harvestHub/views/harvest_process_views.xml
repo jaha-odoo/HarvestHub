@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <record id="harvest_crop_process_form" model="ir.ui.view">
-    <field name="name">harvest.crop.process.form</field>
+
+  <record id="harvest_crop_process_view_tree" model="ir.ui.view">
+    <field name="name">harvest.crop.process.tree</field>
     <field name="model">harvest.process</field>
     <field name="arch" type="xml">
-      <form>
-        <sheet>
-          <group>
-            <field name="name"/>
-            <field name="description"/>
-          </group>
-        </sheet>
+      <tree editable="bottom" decoration-success="category=='Post-Harvest'">
+        <field name="name"/>
+        <field name="description"/>
+        <field name="category"/>
 
-        <div class="oe_chatter">
-          <field name="message_follower_ids" />
-          <field name="message_ids" options="{'post_refresh':'recipients'}"/>
-        </div>
-      </form>
+        <button name="action_done" type="object" icon="fa-check" title="done" context="{'default_category': category}" invisible="crop_id.state == 'Sold'"/>
+        <field name="crop_id" optional='1' invisible='1'/>
+      </tree>
     </field>
   </record>
 

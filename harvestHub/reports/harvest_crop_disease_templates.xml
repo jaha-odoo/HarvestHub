@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="crop_disease_table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Detail</th>
+                    <th>precaustions</th>
+                    <th>medications</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr t-foreach="diseases" t-as="disease">
+                    <td>
+                        <span t-field="disease.name"/>
+                    </td>
+                    <td>
+                        <span t-field="disease.detail"/>
+                    </td>
+                    <td>
+                        <span t-field="disease.precaustions"/>
+                    </td>
+                    <td>
+                        <span t-field="disease.medications"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+</odoo>    

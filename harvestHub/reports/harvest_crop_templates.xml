@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_harvest_crops">
+        <t t-foreach="docs" t-as="crop">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1>
+                            <strong>
+                                <span t-field="crop.name"/>
+                            </strong>
+                        </h1>
+
+                        <div class="col">
+                            <strong>Location:</strong>
+                            <span t-field="crop.location_id" class="ml-2"/>
+                        </div>
+
+                        <div class="col">
+                            <strong>Farmer:</strong>
+                            <span t-field="crop.farmer_id" class="ml-2"/>
+                        </div>
+
+
+                        <div class="col">
+                            <strong>Buyer:</strong>
+                            <span t-field="crop.buyer_id" class="ml-2"/>
+                        </div>
+
+
+                        <div class="col" name="state">
+                            <strong>State:</strong>
+                            <span t-field="crop.state" class="ml-2"/>
+                        </div>
+
+                        <h3>
+                            <strong>Diseases Detail</strong>
+                        </h3>
+
+                        <t t-set="diseases" t-value="crop.mapped('disease_ids')"/>
+                        <t t-if="diseases">
+                            <t t-call="harvestHub.crop_disease_table"/>
+                        </t>
+                        <t t-else="">
+                            <div class="alert alert-info">No Disease Found</div>
+                        </t>
+
+                        <h3>
+                            <strong>Processes Detail</strong>
+                        </h3>
+
+                        <t t-set="processes" t-value="crop.mapped('process_ids')"/>
+                        <t t-if="processes">
+                            <t t-call="harvestHub.crop_process_table"/>
+                        </t>
+                        <t t-else="">
+                            <div class="alert alert-info">No Disease Found</div>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
+

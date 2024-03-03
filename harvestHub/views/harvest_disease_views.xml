@@ -55,3 +55,10 @@
         <field name="view_mode">list,form</field>
     </record>
 </odoo>
+
+
+<!-- seeding	Ground is prepared for planting, which may include tilling, fertilizing, and irrigating.			
+Planting	Seeds or seedlings are planted in the prepared soil.			
+Growing	Plants are cared for as they grow, including watering, fertilizing, and protecting them from pests and diseases.			
+Harvesting	Mature crops are harvested, which may involve picking fruits or grains, or cutting down plants.			
+Post-Harvest	Crops are processed, stored, or sold after harvesting. This stage includes activities like drying, milling, or packaging. -->

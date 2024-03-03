@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_harvest_crop" model="ir.actions.report">
+        <field name="name">Crop Details</field>
+        <field name="model">harvest.crop</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">harvestHub.report_harvest_crops</field>
+        <field name="report_file">harvestHub.report_harvest_crops</field>
+        <field name="binding_model_id" ref="model_harvest_crop"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
+
+

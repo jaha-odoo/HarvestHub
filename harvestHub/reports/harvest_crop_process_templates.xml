@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="crop_process_table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr t-foreach="processes" t-as="process">
+                    <td>
+                        <span t-field="process.name"/>
+                    </td>
+                    <td>
+                        <span t-field="process.category"/>
+                    </td>
+
+                    <td>
+                        <span t-field="process.description"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+</odoo>    

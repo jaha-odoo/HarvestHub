@@ -20,17 +20,17 @@
                     </group>
                     <group>
                         <group>
+                            <field name="phone"/>
+                            <field name="email"/>
                             <field name="address"/>
-                            <field name="taxId"/>
+                            <field name="gender"/>
                         </group>
 
                         <group>
-                            <field name="phone"/>
-                            <field name="email"/>
-                            <field name="gender"/>
+                            <field name="date_of_birth"/>
                             <field name="age"/>
                             <field name="isold"/>
-                            <field name="date_of_birth"/>
+
 
                         </group>
 
@@ -55,16 +55,14 @@
         <field name="model">harvesthub.farmers</field>
         <field name="arch" type="xml">
             <kanban>
-                 <field name="name"/>
-                 <field name="address"/>
-                 <field name="id"/>
-                 <field name="farmer_photo"/>
+                <field name="name"/>
+                <field name="address"/>
+                <field name="id"/>
+                <field name="farmer_photo"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
-                            <div class="o_kanban_image d-none d-md-block"
-                               t-attf-style="background-image: url('#{kanban_image('harvesthub.farmers', 'farmer_photo', record.id.raw_value,placeholder)}')"
-                            />
+                            <div class="o_kanban_image d-none d-md-block" t-attf-style="background-image: url('#{kanban_image('harvesthub.farmers', 'farmer_photo', record.id.raw_value)}');height: 10vh;"></div>
                             <div class="oe_kanban_details">
                                 <p>
                                     <field name="name"/>

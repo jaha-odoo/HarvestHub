@@ -7,19 +7,43 @@
     <field name="arch" type="xml">
       <form>
         <header>
-         
-          <field name="state" widget="statusbar" statusbar_visible="Preparation,Planting,Growing,Harvesting,Post-Harvest"/>
+          <button name="action_sold" type="object" string="Sold" title="Sold" class="oe_highlight" invisible="state != 'Post-Harvest'" />
+          <button name="action_sold" type="object" string="Sold" title="Sold" invisible="state in ['Post-Harvest','Sold']" />
+          <field name="state" widget="statusbar" statusbar_visible="Preparation,Planting,Growing,Harvesting,Post-Harvest,Sold"/>
         </header>
         <sheet>
+          <div class="oe_title">
+            <h1>
+              <field name="ref" readonly="true"/>
+            </h1>
+          </div>
           <h1>
             <field name="name" />
           </h1>
           <group>
-            <field name="durations"/>
             <field name="season"/>
             <field name="description"/>
             <field name="state"/>
           </group>
+
+
+          <notebook>
+            <page string="Description" name="description">
+              <group>
+                <field name="buyer_id"/>
+                <field name="farmer_id"/>
+                <field name="location_id"/>
+              </group>
+            </page>
+
+            <page string="Process" name="process">
+              <field name="process_ids" readonly="state == 'Post-Harvest' or state == 'Sold'"/>
+            </page>
+
+            <page string="Disease" name="disease">
+              <field name="disease_ids"/>
+            </page>
+          </notebook>
         </sheet>
 
         <div class="oe_chatter">
@@ -35,6 +59,9 @@
     <field name="model">harvest.crop</field>
     <field name="arch" type="xml">
       <tree>
+        <header>
+          <button type="action" name="%(harvest_add_disease_action)d" string="Add Disease"/>
+        </header>
         <field name="name" />
         <field name="description"/>
       </tree>

@@ -6,6 +6,7 @@
     "data": [
         "security/ir.model.access.csv",
         "data/sequence.xml",
+        "wizard/add_diseases_views.xml",
         "views/harvest_crop_views.xml",
         "views/harvest_process_views.xml",
         "views/harvest_disease_views.xml",
@@ -15,6 +16,10 @@
         "views/harvest_vehicle_views.xml",
         "views/harvest_incident_views.xml",
         "views/harvest_menu.xml",
+        "reports/harvest_crop_templates.xml",
+        "reports/harvest_crop_reports.xml",
+        "reports/harvest_crop_disease_templates.xml",
+        "reports/harvest_crop_process_templates.xml",
     ],
     "application": True,
 }

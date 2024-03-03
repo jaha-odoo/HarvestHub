@@ -4,11 +4,7 @@
 
     <menuitem id="menu_harvest_crop" name="Crops" parent="menu_harvest_root" sequence="9" />
 
-     <menuitem id="menu_harvest_cropdiseases" name="Cures of Diseases" parent="menu_harvest_root" action="action_harvest_crop_disease" sequence="9"/>
-
     <menuitem id="menu_harvest_crop_agricrop" name="Agriculture Crops" parent="menu_harvest_crop" sequence="9" action="action_harvest_crop_agricrop" />
-
-    <menuitem id="menu_harvest_crop_process" name="Processes" parent="menu_harvest_crop" sequence="9" action="action_harvest_crop_process"/>
 
     <menuitem id="menu_harvest_crop_incident" name="Incident On Crops" parent="menu_harvest_root" sequence="9" action="action_harvest_crop_incident"/>
 
