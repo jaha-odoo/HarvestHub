@@ -3,8 +3,8 @@ from odoo.exceptions import ValidationError
 from dateutil.relativedelta import relativedelta
 
 
-class harvestFarmer(models.Model):
-    _name="harvesthub.farmers"
+class HarvestFarmer(models.Model):
+    _name="harvest.farmer"
     _description="farmers records"
     _inherit="mail.thread"
     # attribute in an Odoo model indicates that the model will inherit the behavior of the mail.thread model. In Odoo, the mail.thread model provides functionality related to communication and tracking, such as the ability to send messages, track activities, and manage followers.
@@ -17,17 +17,16 @@ class harvestFarmer(models.Model):
     gender=fields.Selection([('male','Male'),('female','Female')],string='Gender',tracking=True)
     date_of_birth=fields.Date(string='Date of Birth',tracking=True)
     age= fields.Integer(string='Age',tracking=True,compute="_compute_age",store=True,inverse="_inverse_age")
-    taxId=fields.Char(string='TaxId' ,readonly=True,tracking=True)
-    isold=fields.Boolean(string='IsOld ?',tracking=True)
+    isold=fields.Boolean(string='Isold ?',tracking=True)
     ref=fields.Char(string='Reference',default=lambda self:_('New'))
-    vehicle_ids=fields.One2many('harvest.vehicle','farmer_id')
+    vehicle_id = fields.Many2many("fleet.vehicle", string="Vehicles",tracking=True)
 
     @api.model_create_multi
     def create(self,vals_list):
         for vals in vals_list:
             # if we want to make modification do here
-            vals['ref']=self.env['ir.sequence'].next_by_code('harvesthub.farmers')
-        return super(harvestFarmer,self).create(vals_list)    
+            vals['ref']=self.env['ir.sequence'].next_by_code('harvest.farmer')
+        return super(HarvestFarmer,self).create(vals_list)    
          
     @api.depends('date_of_birth')
     def _compute_age(self):

@@ -2,24 +2,31 @@
 <odoo>
     <data noupdate="1">
         <record id="sequence_harvest_farmer" model="ir.sequence">
-              <field name="name">Harvest Farmer Sequence</field>
-              <field name="code">harvesthub.farmers</field>
-              <field name="prefix">HF</field>
-              <field name="padding">5</field>
+            <field name="name">Harvest Farmer Sequence</field>
+            <field name="code">harvest.farmer</field>
+            <field name="prefix">HF</field>
+            <field name="padding">5</field>
         </record>
 
         <record id="sequence_harvest_location" model="ir.sequence">
-             <field name="name">Harvest Location Sequence</field>
-             <field name="code">harvest.locations</field>
-             <field name="prefix">HL</field>
-             <field name="padding">5</field>
+            <field name="name">Harvest Location Sequence</field>
+            <field name="code">harvest.location</field>
+            <field name="prefix">HL</field>
+            <field name="padding">5</field>
         </record>
 
-          <record id="sequence_harvest_crop" model="ir.sequence">
-             <field name="name">Harvest Crop Sequence</field>
-             <field name="code">harvest.crop</field>
-             <field name="prefix">HC</field>
-             <field name="padding">5</field>
+        <record id="sequence_harvest_crop" model="ir.sequence">
+            <field name="name">Harvest Crop Sequence</field>
+            <field name="code">harvest.crop</field>
+            <field name="prefix">HC</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="sequence_harvest_crop_order" model="ir.sequence">
+            <field name="name">Harvest Crop Order Sequence</field>
+            <field name="code">harvest.crop.order</field>
+            <field name="prefix">HCO</field>
+            <field name="padding">5</field>
         </record>
     </data>
 </odoo>

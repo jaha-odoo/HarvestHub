@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <record id="harvest_crop_disease_form" model="ir.ui.view">
+    <record id="harvest_crop_disease_view_form" model="ir.ui.view">
         <field name="name">harvest.crop.disease.form</field>
         <field name="model">harvest.disease</field>
         <field name="arch" type="xml">
@@ -37,7 +37,7 @@
         </field>
     </record>
 
-    <record id="harvest_crop_disease_list" model="ir.ui.view">
+    <record id="harvest_crop_disease_view_tree" model="ir.ui.view">
         <field name="name">harvest.crop.disease.list</field>
         <field name="model">harvest.disease</field>
         <field name="arch" type="xml">
@@ -48,7 +48,7 @@
         </field>
     </record>
 
-    <record id="action_harvest_crop_disease" model="ir.actions.act_window">
+    <record id="harvest_crop_disease_action" model="ir.actions.act_window">
         <field name="name">Cures of Diseases</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">harvest.disease</field>
@@ -58,7 +58,7 @@
 
 
 <!-- seeding	Ground is prepared for planting, which may include tilling, fertilizing, and irrigating.			
-Planting	Seeds or seedlings are planted in the prepared soil.			
-Growing	Plants are cared for as they grow, including watering, fertilizing, and protecting them from pests and diseases.			
-Harvesting	Mature crops are harvested, which may involve picking fruits or grains, or cutting down plants.			
-Post-Harvest	Crops are processed, stored, or sold after harvesting. This stage includes activities like drying, milling, or packaging. -->
+planting	Seeds or seedlings are planted in the prepared soil.			
+growing	Plants are cared for as they grow, including watering, fertilizing, and protecting them from pests and diseases.			
+harvesting	Mature crops are harvested, which may involve picking fruits or grains, or cutting down plants.			
+post_harvest	Crops are processed, stored, or sold after harvesting. This stage includes activities like drying, milling, or packaging. -->

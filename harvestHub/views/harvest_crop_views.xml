@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-  <record id="harvest_crop_agricrop_form" model="ir.ui.view">
-    <field name="name">harvest.crop.agricrop.form</field>
+  <record id="harvest_crop_view_form" model="ir.ui.view">
+    <field name="name">harvest.crop.form</field>
     <field name="model">harvest.crop</field>
     <field name="arch" type="xml">
       <form>
         <header>
-          <button name="action_sold" type="object" string="Sold" title="Sold" class="oe_highlight" invisible="state != 'Post-Harvest'" />
-          <button name="action_sold" type="object" string="Sold" title="Sold" invisible="state in ['Post-Harvest','Sold']" />
-          <field name="state" widget="statusbar" statusbar_visible="Preparation,Planting,Growing,Harvesting,Post-Harvest,Sold"/>
+          <button name="action_crop_sold" type="object" string="sold" title="sold" class="oe_highlight" invisible="state != 'post_harvest'" />
+          <button name="action_crop_sold" type="object" string="sold" title="sold" invisible="state in ['post_harvest','sold']" />
+          <field name="state" widget="statusbar" statusbar_visible="preparation,planting,growing,harvesting,post_harvest,sold"/>
         </header>
         <sheet>
           <div class="oe_title">
@@ -21,7 +21,9 @@
             <field name="name" />
           </h1>
           <group>
-            <field name="season"/>
+            <field name="product_id"/>
+            <field name="price"/>
+            <field name="quantity"/>
             <field name="description"/>
             <field name="state"/>
           </group>
@@ -33,11 +35,12 @@
                 <field name="buyer_id"/>
                 <field name="farmer_id"/>
                 <field name="location_id"/>
+                <field name="warehouse_id"/>
               </group>
             </page>
 
             <page string="Process" name="process">
-              <field name="process_ids" readonly="state == 'Post-Harvest' or state == 'Sold'"/>
+              <field name="process_ids" readonly="state == 'post_harvest' or state == 'sold'"/>
             </page>
 
             <page string="Disease" name="disease">
@@ -54,8 +57,8 @@
     </field>
   </record>
 
-  <record id="harvest_crop_agricrop_list" model="ir.ui.view">
-    <field name="name">harvest.crop.agricrop.list</field>
+  <record id="harvest_crop_view_tree" model="ir.ui.view">
+    <field name="name">harvest.crop.tree</field>
     <field name="model">harvest.crop</field>
     <field name="arch" type="xml">
       <tree>
@@ -68,7 +71,7 @@
     </field>
   </record>
 
-  <record id="action_harvest_crop_agricrop" model="ir.actions.act_window">
+  <record id="harvest_crop_action" model="ir.actions.act_window">
     <field name="name">Agriculture Crops</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">harvest.crop</field>

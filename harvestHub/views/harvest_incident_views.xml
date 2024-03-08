@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <record id="harvest_crop_incident_form" model="ir.ui.view">
+  <record id="harvest_crop_incident_view_form" model="ir.ui.view">
     <field name="name">harvest.crop.incident.form</field>
     <field name="model">harvest.incident</field>
     <field name="arch" type="xml">
@@ -30,7 +30,7 @@
     </field>
   </record>
 
-  <record id="action_harvest_crop_incident" model="ir.actions.act_window">
+  <record id="harvest_crop_incident_action" model="ir.actions.act_window">
     <field name="name">Incident On Crops</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">harvest.incident</field>

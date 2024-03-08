@@ -1,6 +1,6 @@
 from odoo import api,models,fields
 
-class harvestDiseases(models.Model):
+class HarvestDisease(models.Model):
     _name="harvest.disease"
     _description="crop's diseases records"
     _inherit="mail.thread"
@@ -20,6 +20,6 @@ class harvestDiseases(models.Model):
         print(vals)
         crop_object=self.env["harvest.crop"].browse(vals["crop_id"])
        
-        return super(harvestDiseases, self).create(vals)
+        return super(HarvestDisease, self).create(vals)
 
 

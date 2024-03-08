@@ -2,17 +2,19 @@
 <odoo>
     <menuitem id="menu_harvest_root" name="Harvest Hub" sequence="9" />
 
+    <menuitem id="menu_harvest_crop_order" name="Crop Orders" parent="menu_harvest_root" sequence="9" action="harvest_crop_order_action" />
+
     <menuitem id="menu_harvest_crop" name="Crops" parent="menu_harvest_root" sequence="9" />
 
-    <menuitem id="menu_harvest_crop_agricrop" name="Agriculture Crops" parent="menu_harvest_crop" sequence="9" action="action_harvest_crop_agricrop" />
+    <menuitem id="menu_harvest_crop_agricrop" name="Agriculture Crops" parent="menu_harvest_crop" sequence="9" action="harvest_crop_action" />
 
-    <menuitem id="menu_harvest_crop_incident" name="Incident On Crops" parent="menu_harvest_root" sequence="9" action="action_harvest_crop_incident"/>
+    <menuitem id="menu_harvest_crop_incident" name="Incident On Crops" parent="menu_harvest_root" sequence="9" action="harvest_crop_incident_action"/>
 
     <menuitem id="menu_harvest_configuration" name="Configuration" parent="menu_harvest_root" sequence="9" />
 
-    <menuitem id="menu_harvest_configuration_farmer" name="Configure Farmer" parent="menu_harvest_configuration" action="action_harvest_configuration_farmer" sequence="9" />
+    <menuitem id="menu_harvest_configuration_farmer" name="Configure Farmer" parent="menu_harvest_configuration" action="harvest_farmer_action" sequence="9" />
 
-    <menuitem id="menu_harvest_configuration_location" name="Configure Location" parent="menu_harvest_configuration" action="action_harvest_configuration_location" />
+    <menuitem id="menu_harvest_configuration_location" name="Configure Location" parent="menu_harvest_configuration" action="harvest_configuration_location_action" />
 
-    <menuitem id="menu_harvest_configuration_animal" name="Configure Animal" parent="menu_harvest_configuration" action="action_harvest_configuration_animal"/>
+    <menuitem id="menu_harvest_configuration_animal" name="Configure Animal" parent="menu_harvest_configuration" action="harvest_animal_action"/>
 </odoo>

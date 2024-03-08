@@ -4,7 +4,7 @@ from odoo import models, Command
 class harvestCrop(models.Model):
     _inherit = "harvest.crop"
 
-    def action_sold(self):
+    def action_crop_sold(self):
         print("override action sold property called --------------------")
         moves = self.env["account.move"].create(
             {
@@ -13,12 +13,12 @@ class harvestCrop(models.Model):
                 "invoice_line_ids": [
                     Command.create(
                         {
-                            "name": "Administrative fees",
-                            "quantity": 1,
-                            "price_unit": 100.00,
+                            "name": self.name,
+                            "quantity":self.quantity,
+                            "price_unit":self.price
                         }
                     ),
                 ],
             }
         )
-        return super().action_sold()
+        return super().action_crop_sold()

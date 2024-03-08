@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="harvest_configuration_location_form" model="ir.ui.view">
-        <field name="name">harvest.configuration.location.form</field>
-        <field name="model">harvest.locations</field>
+    <record id="harvest_location_view_form" model="ir.ui.view">
+        <field name="name">harvest.location.form</field>
+        <field name="model">harvest.location</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
@@ -31,9 +31,9 @@
         </field>
     </record>
 
-    <record id="harvest_configuration_location_list" model="ir.ui.view">
-        <field name="name">harvest.configuration.location.list</field>
-        <field name="model">harvest.locations</field>
+    <record id="harvest_location_tree" model="ir.ui.view">
+        <field name="name">harvest.location.tree</field>
+        <field name="model">harvest.location</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
@@ -42,9 +42,9 @@
         </field>
     </record>
 
-    <record id="harvest_configuration_location_search" model="ir.ui.view">
-        <field name="name">harvest.configuration.location.search</field>
-        <field name="model">harvest.locations</field>
+    <record id="harvest_location_search" model="ir.ui.view">
+        <field name="name">harvest.location.search</field>
+        <field name="model">harvest.location</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
@@ -56,10 +56,10 @@
             </search>
         </field>
     </record>
-    <record id="action_harvest_configuration_location" model="ir.actions.act_window">
+    <record id="harvest_configuration_location_action" model="ir.actions.act_window">
         <field name="name">Location</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">harvest.locations</field>
+        <field name="res_model">harvest.location</field>
         <field name="view_mode">list,form</field>
     </record>
 </odoo>

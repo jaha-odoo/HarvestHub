@@ -5,18 +5,17 @@
     <field name="name">harvest.crop.process.tree</field>
     <field name="model">harvest.process</field>
     <field name="arch" type="xml">
-      <tree editable="bottom" decoration-success="category=='Post-Harvest'">
+      <tree editable="bottom" decoration-success="category=='post_harvest'">
         <field name="name"/>
         <field name="description"/>
         <field name="category"/>
-
-        <button name="action_done" type="object" icon="fa-check" title="done" context="{'default_category': category}" invisible="crop_id.state == 'Sold'"/>
-        <field name="crop_id" optional='1' invisible='1'/>
+        <field name="crop_id" optional='1'/>
+        <button name="action_process_done" type="object" icon="fa-check" title="done" context="{'default_category': category}" />
       </tree>
     </field>
   </record>
 
-  <record id="action_harvest_crop_process" model="ir.actions.act_window">
+  <record id="harvest_crop_process_action" model="ir.actions.act_window">
     <field name="name">Crops Processes</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">harvest.process</field>

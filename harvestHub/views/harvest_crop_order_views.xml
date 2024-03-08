@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="harvest_crop_order_view_kanban" model="ir.ui.view">
+        <field name="name">harvest.crop.order.kanban</field>
+        <field name="model">harvest.crop.order</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" records_draggable="0">
+                <field name="ref"/>
+                <field name="product_id"/>
+                <field name="buyer_id"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <h2>
+                                    <field name="ref"/>
+                                </h2>
+                                <p>
+                                    <strong>Buyer: </strong>
+                                    <span>
+                                        <field name="buyer_id"/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <strong>Product: </strong>
+                                    <span>
+                                        <field name="product_id"/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <strong>Quantity(kg): </strong>
+                                    <span>
+                                        <field name="quantity"/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <strong>Farmer: </strong>
+                                    <span>
+                                        <field name="farmer_id"/>
+                                    </span>
+                                </p>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="oe_kanban_bottom_right float-end">
+                                            <field name="buyer_id" widget="many2one_avatar_user"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="harvest_crop_order_view_form" model="ir.ui.view">
+        <field name="name">harvest.crop.order.form</field>
+        <field name="model">harvest.crop.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_crop_order_confirmed" type="object" string="confirmed" title="confirmed" class="oe_highlight" invisible="state != 'new'" />
+                    <button name="action_crop_order_process" type="object" string="process" title="process" class="oe_highlight" invisible="state != 'confirmed'" />
+                    <button name="action_crop_order_done" type="object" string="done" title="done" class="oe_highlight" invisible="state != 'process'" />
+                    <field name="state" widget="statusbar" statusbar_visible="new,confirmed,process,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ref" readonly="true"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <field name="product_id"/>
+                        <field name="quantity"/>
+                        <field name="price"/>
+                        <field name="state"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+
+
+                    <notebook>
+                        <page string="Description" name="description">
+                            <group>
+                                <field name="buyer_id"/>
+                                <field name="farmer_id"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="message_ids" options="{'post_refresh':'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="harvest_crop_order_view_tree" model="ir.ui.view">
+        <field name="name">harvest.crop.order.tree</field>
+        <field name="model">harvest.crop.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ref" />
+                <field name="quantity"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="harvest_crop_order_view_graph" model="ir.ui.view">
+        <field name="name">harvest.crop.order.graph</field>
+        <field name="model">harvest.crop.order</field>
+        <field name="arch" type="xml">
+
+            <graph string="Crop Order quantity by state" type="bar">
+                <field name="farmer_id" type="row"/>
+                <field name="state" type="col" />
+                <field name="quantity" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="harvest_crop_order_view_gantt" model="ir.ui.view">
+        <field name="name">harvest.crop.order.gantt</field>
+        <field name="model">harvest.crop.order</field>
+        <field name="arch" type="xml">
+            <gantt color="id" date_stop="end_date" date_start="start_date" default_group_by="farmer_id" default_scale="month" pill_label="True" precision="{'day': 'hour:full', 'week': 'day:full', 'month': 'day:full', 'year': 'day:full'}" string="Schedule" thumbnails="{'user_id':'image_1920'}" decoration-warning="state=='confirmed'" decoration-info="state=='process'" decoration-success="state=='done'">
+                <field name="state" />
+            </gantt>
+        </field>
+    </record>
+
+    <record id="harvest_crop_order_action" model="ir.actions.act_window">
+        <field name="name">Agriculture Crops Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">harvest.crop.order</field>
+        <field name="view_mode">kanban,list,form,gantt,graph</field>
+    </record>
+</odoo>

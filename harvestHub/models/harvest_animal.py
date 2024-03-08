@@ -1,6 +1,6 @@
 from odoo import models,fields
 
-class harvestAnimal(models.Model):
+class HarvestAnimal(models.Model):
     _name="harvest.animal"
     _description="farm's animal records"
     _inherit="mail.thread"

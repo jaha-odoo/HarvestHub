@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <record id="view_harvest_configuration_farmer_form" model="ir.ui.view">
-        <field name="name">harvest.configuration.farmer.form</field>
-        <field name="model">harvesthub.farmers</field>
+    <record id="harvest_farmer_view_form" model="ir.ui.view">
+        <field name="name">harvest.farmer.form</field>
+        <field name="model">harvest.farmer</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
@@ -36,7 +36,9 @@
 
                         <notebook>
                             <page string="Vehicles">
-                                <field name="vehicle_ids" />
+                                <group>
+                                    <field name="vehicle_id" widget="many2many_tags"/> 
+                                </group>
                             </page>
                         </notebook>
                     </group>
@@ -50,9 +52,9 @@
         </field>
     </record>
 
-    <record id="view_harvest_configuration_farmer_kanban" model="ir.ui.view">
-        <field name="name">harvest.configuration.farmer.kanban</field>
-        <field name="model">harvesthub.farmers</field>
+    <record id="harvest_farmer_view_kanban" model="ir.ui.view">
+        <field name="name">harvest.farmer.kanban</field>
+        <field name="model">harvest.farmer</field>
         <field name="arch" type="xml">
             <kanban>
                 <field name="name"/>
@@ -62,7 +64,7 @@
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
-                            <div class="o_kanban_image d-none d-md-block" t-attf-style="background-image: url('#{kanban_image('harvesthub.farmers', 'farmer_photo', record.id.raw_value)}');height: 10vh;"></div>
+                            <div class="o_kanban_image d-none d-md-block" t-attf-style="background-image: url('#{kanban_image('harvest.farmer', 'farmer_photo', record.id.raw_value)}');height: 10vh;"></div>
                             <div class="oe_kanban_details">
                                 <p>
                                     <field name="name"/>
@@ -78,9 +80,9 @@
         </field>
     </record>
 
-    <record id="view_configuration_harvest_farmer_search" model="ir.ui.view">
-        <field name="name">harvest.configuration.farmer.search</field>
-        <field name="model">harvesthub.farmers</field>
+    <record id="harvest_farmer_view_search" model="ir.ui.view">
+        <field name="name">harvest.farmer.search</field>
+        <field name="model">harvest.farmer</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
@@ -95,10 +97,10 @@
         </field>
     </record>
 
-    <record id="action_harvest_configuration_farmer" model="ir.actions.act_window">
+    <record id="harvest_farmer_action" model="ir.actions.act_window">
         <field name="name">Farmers</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">harvesthub.farmers</field>
+        <field name="res_model">harvest.farmer</field>
         <field name="view_mode">kanban,form</field>
     </record>
 </odoo>
