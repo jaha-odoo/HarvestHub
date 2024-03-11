@@ -31,6 +31,7 @@ class HarvestCrop(models.Model):
     location_id = fields.Many2one("harvest.location", string="Location", tracking=True)
     warehouse_id=fields.Many2one("stock.warehouse",string="Crop Warehouse",tracking=True)
     product_id = fields.Many2one('product.product', string='Agriculture Crop',tracking=True)
+    material_id=fields.Many2many("product.product",string="Raw Material",tracking=True)
 
 
     @api.model_create_multi

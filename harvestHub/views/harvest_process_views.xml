@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+  <record id="harvest_crop_process_view_form" model="ir.ui.view">
+    <field name="name">harvest.crop.process.form</field>
+    <field name="model">harvest.process</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="crop_id"/>
+          </group>
+          <notebook>
+            <page string="Process Fleets" name="process_fleet">
+              <field name="vehicle_id"/>
+            </page>
+
+            <page string="Process Animals" name="process_animal">
+              <field name="animal_id">
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+
+    </field>
+  </record>
+
   <record id="harvest_crop_process_view_tree" model="ir.ui.view">
     <field name="name">harvest.crop.process.tree</field>
     <field name="model">harvest.process</field>
     <field name="arch" type="xml">
-      <tree editable="bottom" decoration-success="category=='post_harvest'">
+      <tree>
         <field name="name"/>
-        <field name="description"/>
-        <field name="category"/>
-        <field name="crop_id" optional='1'/>
-        <button name="action_process_done" type="object" icon="fa-check" title="done" context="{'default_category': category}" />
+        <field name="crop_id"/>
       </tree>
     </field>
   </record>
 
   <record id="harvest_crop_process_action" model="ir.actions.act_window">
-    <field name="name">Crops Processes</field>
+    <field name="name">Crops Detail Processes</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">harvest.process</field>
     <field name="view_mode">list,form</field>

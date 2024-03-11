@@ -39,8 +39,19 @@
               </group>
             </page>
 
+            <page string="Crop's Raw Material" name="raw_material">
+               <field name="material_id"/>
+            </page>
+
             <page string="Process" name="process">
-              <field name="process_ids" readonly="state == 'post_harvest' or state == 'sold'"/>
+              <field name="process_ids" readonly="state == 'post_harvest' or state == 'sold'">
+                <tree editable="bottom" decoration-success="category=='post_harvest'">
+                  <field name="name"/>
+                  <field name="description"/>
+                  <field name="category"/>
+                  <button name="action_process_done" type="object" icon="fa-check" title="done" context="{'default_category': category}" invisible="parent.state == 'sold'"/>
+                </tree>
+              </field>
             </page>
 
             <page string="Disease" name="disease">

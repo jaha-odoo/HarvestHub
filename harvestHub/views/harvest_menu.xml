@@ -8,6 +8,8 @@
 
     <menuitem id="menu_harvest_crop_agricrop" name="Agriculture Crops" parent="menu_harvest_crop" sequence="9" action="harvest_crop_action" />
 
+    <menuitem id="menu_harvest_crop_process" name="Crops Processes" parent="menu_harvest_crop" sequence="9" action="harvest_crop_process_action"/>
+
     <menuitem id="menu_harvest_crop_incident" name="Incident On Crops" parent="menu_harvest_root" sequence="9" action="harvest_crop_incident_action"/>
 
     <menuitem id="menu_harvest_configuration" name="Configuration" parent="menu_harvest_root" sequence="9" />
