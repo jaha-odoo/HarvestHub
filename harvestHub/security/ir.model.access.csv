@@ -2,6 +2,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 harvestHub.access_harvest_farmer,access_harvest_farmer,harvestHub.model_harvest_farmer,base.group_user,1,1,1,1
 harvestHub.access_harvest_location,access_harvest_location,harvestHub.model_harvest_location,base.group_user,1,1,1,1
 harvestHub.access_harvest_animal,access_harvest_animal,harvestHub.model_harvest_animal,base.group_user,1,1,1,1
+harvestHub.access_harvest_equipment,access_harvest_equipment,harvestHub.model_harvest_equipment,base.group_user,1,1,1,1
 harvestHub.access_harvest_crop_order,access_harvest_crop_order,harvestHub.model_harvest_crop_order,base.group_user,1,1,1,1
 harvestHub.access_harvest_crop,access_harvest_crop,harvestHub.model_harvest_crop,base.group_user,1,1,1,1
 harvestHub.access_harvest_process,access_harvest_process,harvestHub.model_harvest_process,base.group_user,1,1,1,1

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="harvest_crop_order_rule_manager" model="ir.rule">
+        <field name="name">"harvest.crop.order.rule.manager</field>
+        <field name="model_id" ref="harvestHub.model_harvest_crop_order"/>
+        <field name="domain_force">[(1,'=',1)]   
+        </field>
+        <field name="groups" eval="[(4, ref('harvestHub.harvest_group_manager'))]"/>
+    </record>
+
+    <record id="rule_crop_order_farmer" model="ir.rule">
+        <field name="name">Farmer Crop Order Rule</field>
+        <field name="model_id" ref="harvestHub.model_harvest_crop_order"/>
+        <field name="domain_force">['|', ('farmer_id', '=', False), ('farmer_id', '=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('harvest_group_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+</odoo>

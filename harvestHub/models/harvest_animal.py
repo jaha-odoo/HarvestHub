@@ -8,3 +8,4 @@ class HarvestAnimal(models.Model):
     name= fields.Char(string='Name',required=True,tracking=True)
     count= fields.Integer(string='Count',required=True,tracking=True)
     description=fields.Char(string='Description',tracking=True)
+    process_id = fields.Many2one("harvest.process",required=True,tracking=True)

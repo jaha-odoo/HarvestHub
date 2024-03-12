@@ -11,19 +11,40 @@
             <field name="name"/>
             <field name="crop_id"/>
           </group>
+
+          <group>
+            <field name="start_date"/>
+            <field name="end_date"/>
+          </group>
+
           <notebook>
             <page string="Process Fleets" name="process_fleet">
               <field name="vehicle_id"/>
             </page>
 
             <page string="Process Animals" name="process_animal">
-              <field name="animal_id">
+              <field name="animal_ids">
+                <tree editable="bottom">
+                  <field name="name" />
+                  <field name="count"/>
+                  <field name="description"/>
+                </tree>
+              </field>
+            </page>
+
+            <page string="Process Equipments" name="process_equipment">
+              <field name="equipment_ids">
+                <tree editable="bottom">
+                  <field name="name" />
+                  <field name="date"/>
+                  <field name="owner_id"/>
+                  <field name="description"/>
+                </tree>
               </field>
             </page>
           </notebook>
         </sheet>
       </form>
-
     </field>
   </record>
 

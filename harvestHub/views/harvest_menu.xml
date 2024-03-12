@@ -18,5 +18,4 @@
 
     <menuitem id="menu_harvest_configuration_location" name="Configure Location" parent="menu_harvest_configuration" action="harvest_configuration_location_action" />
 
-    <menuitem id="menu_harvest_configuration_animal" name="Configure Animal" parent="menu_harvest_configuration" action="harvest_animal_action"/>
 </odoo>
