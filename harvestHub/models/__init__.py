@@ -7,4 +7,5 @@ from . import harvest_process
 from . import harvest_disease
 from . import harvest_incident
 from . import harvest_equipment
+from . import inherited_users
 

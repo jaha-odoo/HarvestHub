@@ -5,14 +5,16 @@
         <field name="model">harvest.crop.order</field>
         <field name="arch" type="xml">
             <kanban default_group_by="state" records_draggable="0">
+                <progressbar field="priority" colors='{"3": "success", "2": "warning", "1": "danger", "0": "info"}'/>
                 <field name="ref"/>
                 <field name="product_id"/>
                 <field name="buyer_id"/>
+                <field name="owner_id"/>
 
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <div class="oe_kanban_details">
+                        <div class="oe_kanban_global_click o_has_icon oe_kanban_content oe_kanban_card">
+                            <div class="o_kanban_card_content mw-100">
                                 <h2>
                                     <field name="ref"/>
                                 </h2>
@@ -35,17 +37,18 @@
                                     </span>
                                 </p>
                                 <p>
-                                    <strong>Farmer: </strong>
+                                    <strong>Owner: </strong>
                                     <span>
-                                        <field name="farmer_id"/>
+                                        <field name="owner_id"/>
                                     </span>
                                 </p>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="oe_kanban_bottom_right float-end">
-                                            <field name="buyer_id" widget="many2one_avatar_user"/>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="o_kanban_record_bottom mt-3">
+                                <div class="oe_kanban_bottom_left">
+                                    <field name="priority" widget="priority" />
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <field name="buyer_id" widget="many2one_avatar_user"/>
                                 </div>
                             </div>
                         </div>
@@ -61,9 +64,9 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_crop_order_confirmed" type="object" string="confirmed" title="confirmed" class="oe_highlight" invisible="state != 'new'" />
-                    <button name="action_crop_order_process" type="object" string="process" title="process" class="oe_highlight" invisible="state != 'confirmed'" />
-                    <button name="action_crop_order_done" type="object" string="done" title="done" class="oe_highlight" invisible="state != 'process'" />
+                    <button name="action_crop_order_confirmed" type="object" string="confirmed" title="confirmed" class="btn-info" invisible="state != 'new'" />
+                    <button name="action_crop_order_process" type="object" string="process" title="process" class="btn-warning" invisible="state != 'confirmed'" />
+                    <button name="action_crop_order_done" type="object" string="done" title="done" class="btn-success" invisible="state != 'process'" />
                     <field name="state" widget="statusbar" statusbar_visible="new,confirmed,process,done"/>
                 </header>
                 <sheet>
@@ -80,6 +83,7 @@
                         <field name="state"/>
                         <field name="start_date"/>
                         <field name="end_date"/>
+                        <field name="priority" />
                     </group>
 
 
@@ -87,7 +91,7 @@
                         <page string="Description" name="description">
                             <group>
                                 <field name="buyer_id"/>
-                                <field name="farmer_id"/>
+                                <field name="owner_id"/>
                             </group>
                         </page>
                     </notebook>
@@ -105,12 +109,13 @@
         <field name="name">harvest.crop.order.tree</field>
         <field name="model">harvest.crop.order</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-success="state in ['done']" decoration-bf="state in ['process']" decoration-info="state in ['confirmed']">
                 <field name="ref" />
                 <field name="quantity"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
-                <field name="state"/>
+                <field name="price" widget="monetary" decoration-bf="1"/>
+                <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state == 'confirmed'" decoration-primary="state == 'process'"/>
             </tree>
         </field>
     </record>
@@ -121,7 +126,7 @@
         <field name="arch" type="xml">
 
             <graph string="Crop Order quantity by state" type="bar">
-                <field name="farmer_id" type="row"/>
+                <field name="owner_id" type="row"/>
                 <field name="state" type="col" />
                 <field name="quantity" />
             </graph>
@@ -132,7 +137,7 @@
         <field name="name">harvest.crop.order.gantt</field>
         <field name="model">harvest.crop.order</field>
         <field name="arch" type="xml">
-            <gantt color="id" date_stop="end_date" date_start="start_date" default_group_by="farmer_id" default_scale="month" pill_label="True" precision="{'day': 'hour:full', 'week': 'day:full', 'month': 'day:full', 'year': 'day:full'}" string="Schedule" thumbnails="{'user_id':'image_1920'}" decoration-warning="state=='confirmed'" decoration-info="state=='process'" decoration-success="state=='done'">
+            <gantt color="id" date_stop="end_date" date_start="start_date" default_group_by="owner_id" default_scale="month" pill_label="True" precision="{'day': 'hour:full', 'week': 'day:full', 'month': 'day:full', 'year': 'day:full'}" string="Schedule" thumbnails="{'user_id':'image_1920'}" decoration-warning="state=='confirmed'" decoration-info="state=='process'" decoration-success="state=='done'">
                 <field name="state" />
             </gantt>
         </field>

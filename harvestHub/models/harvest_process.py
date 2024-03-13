@@ -24,10 +24,11 @@ class HarvestProcess(models.Model):
     crop_id = fields.Many2one(
         "harvest.crop", required=True, string="Crop Order", tracking=True
     )
-    animal_ids = fields.One2many("harvest.animal", "process_id")
-    equipment_ids = fields.One2many("harvest.equipment", "process_id")
+    animal_ids = fields.One2many("harvest.animal", "process_id",tracking=True)
+    equipment_ids = fields.One2many("harvest.equipment", "process_id",tracking=True)
     vehicle_id = fields.Many2many("fleet.vehicle", string="Vehicles", tracking=True)
-
+    farmer_id=fields.Many2many("harvest.farmer",string="Farmers",tracking=True)
+    
     def action_process_done(self):
         for record in self:
             category = record._context.get("default_category")

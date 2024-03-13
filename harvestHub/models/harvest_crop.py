@@ -20,20 +20,27 @@ class HarvestCrop(models.Model):
         string="State",
         tracking=True,
     )
-    price=fields.Integer(string="Unit Price",tracking=True)
+    price = fields.Integer(string="Unit Price", tracking=True)
     description = fields.Char(string="Description", tracking=True)
     ref = fields.Char(string="Reference", default=lambda self: _("New"))
     quantity = fields.Float(string="Quantity(kg)", tracking=True)
-    disease_ids = fields.One2many("harvest.disease", "crop_id")
-    process_ids = fields.One2many("harvest.process", "crop_id")
-    buyer_id = fields.Many2one("res.partner", copy=False, string="Buyer")
-    farmer_id = fields.Many2one("harvest.farmer", string="Farmer", tracking=True)
+    disease_ids = fields.One2many("harvest.disease", "crop_id", tracking=True)
+    process_ids = fields.One2many("harvest.process", "crop_id", tracking=True)
+    buyer_id = fields.Many2one("res.partner", copy=False, string="Buyer", tracking=True)
+    owner_id = fields.Many2one(
+        "res.users",
+        default=lambda self: self.env.user,
+        string="Owner Of Farm",
+        tracking=True,
+    )
     location_id = fields.Many2one("harvest.location", string="Location", tracking=True)
-    warehouse_id=fields.Many2one("stock.warehouse",string="Crop Warehouse",tracking=True)
-    product_id = fields.Many2one('product.product', string='Agriculture Crop',tracking=True)
-    material_id=fields.Many2many("product.product",string="Raw Material",tracking=True)
-
-
+    product_id = fields.Many2one(
+        "product.product", string="Agriculture Crop", tracking=True
+    )
+    material_id = fields.Many2many(
+        "product.product", string="Raw Material", tracking=True
+    )
+   
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
@@ -48,3 +55,5 @@ class HarvestCrop(models.Model):
             else:
                 rec.state = "sold"
         return True
+
+  

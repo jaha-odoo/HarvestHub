@@ -8,8 +8,13 @@ class HarvestLocation(models.Model):
 
     name= fields.Char(string='Name',required=True,tracking=True)
     address= fields.Char(string='Address',tracking=True)
-    farmer=fields.Many2one('harvest.farmer',string="Farmer",tracking=True)
     ref=fields.Char(string='Reference',default=lambda self:_('New'))
+    owner_id = fields.Many2one(
+        "res.users",
+        default=lambda self: self.env.user,
+        string="Owner Of Farm",
+        tracking=True,
+    )
 
     # _('New'): This is a call to the _() function, which is used for translating strings. The _() function is a convention in Odoo for marking strings that need to be translated into different languages. In this case, 'New' is the string to be translated.
     

@@ -12,6 +12,13 @@
           <field name="state" widget="statusbar" statusbar_visible="preparation,planting,growing,harvesting,post_harvest,sold"/>
         </header>
         <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button name="%(fleet.fleet_vehicle_action)d" class="oe_stat_button" type="action" icon="fa-truck">
+              <div class="o_stat_info">
+                <span class="o_stat_text">Vehicle</span>
+              </div>
+            </button>
+          </div>
           <div class="oe_title">
             <h1>
               <field name="ref" readonly="true"/>
@@ -33,14 +40,13 @@
             <page string="Description" name="description">
               <group>
                 <field name="buyer_id"/>
-                <field name="farmer_id"/>
+                <field name="owner_id"/>
                 <field name="location_id"/>
-                <field name="warehouse_id"/>
               </group>
             </page>
 
             <page string="Crop's Raw Material" name="raw_material">
-               <field name="material_id"/>
+              <field name="material_id"/>
             </page>
 
             <page string="Process" name="process">
@@ -78,6 +84,8 @@
         </header>
         <field name="name" />
         <field name="description"/>
+        <field name="state" widget="badge" decoration-info="state == 'preparation'" decoration-warning="state == 'planting'" decoration-danger="state == 'growing'" decoration-primary="state == 'harvesting'" decoration-success="state == 'post_harvest'" decoration-bf="True == True"/>
+
       </tree>
     </field>
   </record>

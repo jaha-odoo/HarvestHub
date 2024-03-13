@@ -17,8 +17,8 @@
                         </div>
 
                         <div class="col">
-                            <strong>Farmer:</strong>
-                            <span t-field="crop.farmer_id" class="ml-2"/>
+                            <strong>Owner Of Farm:</strong>
+                            <span t-field="crop.owner_id" class="ml-2"/>
                         </div>
 
 
@@ -54,7 +54,15 @@
                             <t t-call="harvestHub.crop_process_table"/>
                         </t>
                         <t t-else="">
-                            <div class="alert alert-info">No Disease Found</div>
+                            <div class="alert alert-info">No Process Found</div>
+                        </t>
+
+                        <t t-set="materials" t-value="crop.mapped('material_id')"/>
+                        <t t-if="materials">
+                            <t t-call="harvestHub.crop_material_table"/>
+                        </t>
+                        <t t-else="">
+                            <div class="alert alert-info">No Material Found</div>
                         </t>
                     </div>
                 </t>

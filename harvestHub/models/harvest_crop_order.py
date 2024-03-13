@@ -8,12 +8,19 @@ class HarvestCropOrder(models.Model):
 
     ref = fields.Char(string="Reference", default=lambda self: _("New"))
     quantity = fields.Float(string="Estimated Quantity(kg)", tracking=True)
-    price=fields.Integer(string="Price",tracking=True)
+    price = fields.Integer(string="Price", tracking=True)
     start_date = fields.Date(string="Start Date", tracking=True)
     end_date = fields.Date(string="End Date", tracking=True)
-    buyer_id = fields.Many2one("res.partner", copy=False, string="Buyer")
-    farmer_id = fields.Many2one("harvest.farmer", string="Farmer", tracking=True)
-    product_id = fields.Many2one('product.product', string='Agriculture Crop',tracking=True)
+    buyer_id = fields.Many2one("res.partner", copy=False, string="Buyer",tracking=True)
+    owner_id = fields.Many2one(
+        "res.users",
+        default=lambda self: self.env.user,
+        string="Owner Of Farm",
+        tracking=True,
+    )
+    product_id = fields.Many2one(
+        "product.product", string="Agriculture Crop", tracking=True
+    )
 
     state = fields.Selection(
         [
@@ -25,6 +32,11 @@ class HarvestCropOrder(models.Model):
         string="State",
         default="new",
         tracking=True,
+    )
+    priority = fields.Selection(
+        [("0", "Normal"), ("1", "Low"), ("2", "High"), ("3", "Very High")],
+        string="Priority",
+        default="0",
     )
 
     @api.model_create_multi

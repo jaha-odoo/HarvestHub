@@ -14,8 +14,8 @@
                     <group>
 
                         <field name="name" class="h2"/>
-                        <field name="farmer"/>
-                         <field name="address"/>
+                        <field name="owner_id"/>
+                        <field name="address"/>
                     </group>
                 </sheet>
 
@@ -47,7 +47,7 @@
                 <field name="address"/>
 
                 <group expand="0" string="Group By">
-                    <filter string="farmer" name="group_by_farmer" context="{'group_by':'farmer'}" />
+                    <filter string="owner" name="group_by_owner" context="{'group_by':'owner_id'}" />
                 </group>
             </search>
         </field>

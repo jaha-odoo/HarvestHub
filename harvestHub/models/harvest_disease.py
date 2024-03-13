@@ -12,7 +12,7 @@ class HarvestDisease(models.Model):
     condition= fields.Char(string='Suitable Condition',tracking=True)
     precaustions= fields.Char(string='Precaustions',tracking=True)
     medications= fields.Char(string='Medications',tracking=True)
-    crop_id = fields.Many2one("harvest.crop", required=True)
+    crop_id = fields.Many2one("harvest.crop", required=True,tracking=True)
 
 
     @api.model

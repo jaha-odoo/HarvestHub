@@ -11,7 +11,7 @@
             </xpath>
 
               <xpath expr="//group[@name='partner_details']" position="inside">
-                <field name="farmer_id"/>
+                <field name="owner_id"/>
             </xpath>
         </field>
     </record>

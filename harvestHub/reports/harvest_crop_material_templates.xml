@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="crop_material_table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr t-foreach="materials" t-as="material">
+                    <td>
+                        <span t-field="material.name"/>
+                    </td>
+                    <td>
+                        <span t-field="material.standard_price"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+</odoo>    

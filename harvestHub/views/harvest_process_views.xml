@@ -10,6 +10,7 @@
           <group>
             <field name="name"/>
             <field name="crop_id"/>
+            <field name="farmer_id" widget="many2many_tags"/>
           </group>
 
           <group>
@@ -44,6 +45,10 @@
             </page>
           </notebook>
         </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids" />
+          <field name="message_ids" options="{'post_refresh':'recipients'}"/>
+        </div>
       </form>
     </field>
   </record>

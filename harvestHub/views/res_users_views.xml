@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_users_inherit_harvesthub_view_form" model="ir.ui.view">
+        <field name="name">res.users.inherit.harvesthub.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook" position="inside">
+                <page name="Crop Orders" string="Crop Orders">
+                    <field name="crop_order_ids" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
