@@ -114,7 +114,7 @@
                 <field name="quantity"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
-                <field name="price" widget="monetary" decoration-bf="1"/>
+                <field name="price"/>
                 <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state == 'confirmed'" decoration-primary="state == 'process'"/>
             </tree>
         </field>
