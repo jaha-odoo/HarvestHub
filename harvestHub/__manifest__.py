@@ -1,6 +1,6 @@
 {
     "name": "Harvest Hub",
-    "depends": ["base", "mail","fleet","stock"],
+    "depends": ["base", "mail","fleet","stock",'maintenance'],
     "author": "jatin",
     "category": "Harvest Hub/Agriculture",
     "installable": True,
@@ -19,6 +19,7 @@
         "views/harvest_incident_views.xml",
         "views/harvest_menu.xml",
         "views/res_users_views.xml",
+        "views/maintenance_equipment_views.xml",
         "reports/harvest_crop_templates.xml",
         "reports/harvest_crop_reports.xml",
         "reports/harvest_crop_disease_templates.xml",
